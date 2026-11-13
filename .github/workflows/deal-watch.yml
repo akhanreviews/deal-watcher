@@ -1,0 +1,54 @@
+name: Deal watch
+
+on:
+  schedule:
+    # Every 10 minutes, 24/7. (GitHub may run it a few minutes late at busy times.)
+    # If your repository is PRIVATE, change this to "*/30 * * * *" to stay
+    # inside the free 2,000 minutes/month. Public repositories are unlimited.
+    - cron: "*/10 * * * *"
+  workflow_dispatch: # adds a "Run workflow" button for manual runs
+
+permissions:
+  contents: write # lets the watcher save the list of deals it already sent you
+
+concurrency:
+  group: deal-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Scan for deals
+        run: node dealwatch.mjs
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+
+      - name: Scan for resale flips
+        if: always()
+        run: node resell.mjs
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
+          EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
+
+      - name: Remember deals already sent
+        if: always()
+        run: |
+          if [ -d state ]; then
+            git config user.name "deal-watcher"
+            git config user.email "deal-watcher@users.noreply.github.com"
+            git add state/
+            if ! git diff --cached --quiet; then
+              git commit -m "Update seen deals"
+              git pull --rebase --autostash
+              git push
+            fi
+          fi

@@ -1,0 +1,26 @@
+# ===================================================================
+#  RESELLER SCANNER SETTINGS  -  all money in US dollars
+# ===================================================================
+#  The reseller scanner checks every new hot deal against current eBay
+#  listings for the same item, works out what you'd likely keep after
+#  fees and shipping, and pings you only when the numbers clear the bar
+#  below. Change any number and commit; it applies on the next run.
+# ===================================================================
+
+# --- When to ping you ---
+min_profit: 25              # minimum estimated profit per item, after all costs
+min_roi_percent: 20         # minimum return on what you spend (profit / cost)
+min_comparable_listings: 5  # need at least this many matching eBay listings to trust the estimate
+
+# --- Which deals to consider ---
+min_buy_price: 20           # ignore deals cheaper than this (profit too small to bother)
+max_buy_price: 600          # ignore deals more expensive than this (your budget per item)
+
+# --- Your costs ---
+sales_tax_percent: 8        # tax you pay when buying (varies by state, 0-10%)
+ebay_fee_percent: 13.6      # eBay final value fee for most categories (incl. shipping)
+ebay_order_fee: 0.40        # eBay per-order fee
+shipping_cost: 12           # what you pay to ship one item to the buyer (raise for big/heavy items)
+
+# --- How cautious the price estimate is ---
+undercut_percent: 5         # assume you list this much below the cheaper comparable listings to sell fast

@@ -1,0 +1,49 @@
+# ===================================================================
+#  DEAL WATCHLIST  -  edit this file to choose what you get pinged about
+# ===================================================================
+#
+#  One item per line, in this format:
+#
+#     what to look for   |  max price  |  words to ignore
+#
+#  - "what to look for": one or more search phrases, separated by commas.
+#        A deal matches if its title contains ALL the words of ANY phrase.
+#        e.g.  ps5, playstation 5
+#  - "max price": highest price (in $) you'd pay. Leave empty for any price.
+#        Deals that don't show a price (e.g. "Nike sale, up to 50% off")
+#        are still sent, marked "price not listed".
+#  - "words to ignore": deals whose title contains any of these are skipped.
+#        Useful for cutting out accessories: case, screen protector, renewed
+#
+#  Lines starting with # are ignored. Upper/lower case doesn't matter.
+#  The items below are STARTER EXAMPLES - change, delete, or add your own.
+# ===================================================================
+
+
+# ---------- WATCHES ----------
+seiko 5, seiko presage                 | 250  | strap, band, renewed
+casio g-shock, g shock                 | 80   | strap, band, screen protector
+garmin forerunner, garmin fenix, garmin instinct | 300 | band, strap, screen protector, case, charger
+apple watch                            | 300  | band, strap, charger, charging, stand, dock, case, screen protector, renewed, refurbished
+citizen eco-drive, orient bambino, hamilton khaki, tissot prx | 400 | strap, band
+
+
+# ---------- TECH / ELECTRONICS ----------
+airpods pro                            | 170  | case, cover, renewed, refurbished, ear tips
+sony wh-1000xm5, sony wh-1000xm6       | 300  | case, renewed, refurbished
+oled tv                                | 1200 | mount, stand, renewed
+ipad air, ipad pro                     | 500  | case, cover, keyboard, screen protector, stylus, renewed, refurbished
+macbook air                            | 900  | case, sleeve, charger, renewed, refurbished
+
+
+# ---------- GAMING ----------
+ps5, playstation 5                     | 450  | controller, headset, skin, stand, charging, cover, faceplate
+nintendo switch 2                      | 450  | case, screen protector, grip, charging
+xbox series x                          | 450  | controller, headset, skin
+rtx 5070, rtx 5080                     | 800  | laptop
+
+
+# ---------- CLOTHING / SHOES ----------
+north face jacket, patagonia jacket    | 150  |
+new balance 990, new balance 9060      | 140  |
+levi's 501, levis 501                  | 40   |
